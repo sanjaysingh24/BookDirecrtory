@@ -8,7 +8,24 @@ try{
   res.json(doc);
   console.log("successfully Registered");
 }catch(e){
- res.status(404).json({message: 'somtehing error'})
+ res.status(404).json({message: 'something error'})
 }
 
+}
+
+export const login = async(req,res)=>{
+  try{
+    const username =req.body.Name;
+    const password =req.body.password;
+    const user = await User.findOne({Name:username});
+    if(user && user.password ===password){
+       res.json({success:true});
+       console.log("login successful");
+    }
+    else{
+      console.log("login failed");
+    }
+  }catch(err){
+    console.log(err);
+  }
 }
