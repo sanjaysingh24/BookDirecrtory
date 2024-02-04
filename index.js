@@ -34,7 +34,7 @@ app.use('/user',userRouter);
 app.use('/books',bookRouter);
 
 app.get('/',(req,res)=>{
-    res.json({success:true});
+    res.render('Index.ejs')
 })
 
 

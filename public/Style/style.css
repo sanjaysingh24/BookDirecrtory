@@ -1,0 +1,20 @@
+/* .login_bg{
+    background: url('../img/bg.webp') no-repeat;
+} */
+.heading{
+    font-size: 80px;
+}
+.custom_form{
+border:none none  1px solid grey !important;
+border-radius: 0px !important;
+ border-top: none !important;
+ border-left:none!important;
+ border-right:none !important;
+}
+.custom_form:focus{
+    outline: none !important;   
+    box-shadow: none !important;
+}
+.btn_styling{
+    background-color: #F45B69 !important;
+}
