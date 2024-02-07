@@ -20,18 +20,22 @@
           <div class="col-lg-6 login_right_section">
 
             <div class="form_container">
-              <h2 class=" text-center">User login</h2>
-              <form action="/user/login" method="post">
-                <!-- <div class="mb-3">
-                    <input type="email" class="custom_form w-100" id="floatingInput" placeholder="Enter your email">
+              <h2 class=" text-center">User Register</h2>
+              <form action="/user/Register" method="post">
+                <div class="mb-3">
+                    <input type="email" class="custom_form w-100" id="floatingInput" placeholder="Enter your email" name="email">
                   
-                  </div> -->
+                  </div>
+                <div class="mb-3">
+                    <input type="text" class="custom_form w-100" id="floatingInput" placeholder="Enter your phone number" name="phone">
+                  
+                  </div>
                   <div class="mb-3">
-                    <input type="text" class=" custom_form  w-100" id="floatingName" placeholder="username">
+                    <input type="text" class=" custom_form  w-100" id="floatingName" placeholder="username" name="username">
                  
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="custom_form w-100" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="custom_form w-100" id="floatingPassword" placeholder="Password" name="Password">
               
                   </div>
                   <div class="mb-3 form-check">
@@ -44,10 +48,10 @@
                     >i agree to the all Statement  in <b><u>Terms of Service</u></b></label
                   >
                 </div>
-               <div class="text-center">
-                <button type="submit" class="btn  btn_styling text-white">Login</button>
-                 <p> <span><a href="/register"><u>New here Register here</u></a></span></p>
-               </div>
+              <div class="text-center">
+                <button type="submit" class="btn  btn_styling text-white">Sign up</button> 
+                <p><span><a href="/"><u>Already have account Login here</u></a></span></p>
+              </div>
               </form>
             </div>
           </div>

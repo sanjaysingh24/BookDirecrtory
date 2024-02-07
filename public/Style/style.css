@@ -5,11 +5,10 @@
     font-size: 80px;
 }
 .custom_form{
-border:none none  1px solid grey !important;
-border-radius: 0px !important;
- border-top: none !important;
- border-left:none!important;
- border-right:none !important;
+padding: 10px ; 
+border: 1px solid grey !important;
+margin-top: 20px;
+
 }
 .custom_form:focus{
     outline: none !important;   
@@ -17,4 +16,14 @@ border-radius: 0px !important;
 }
 .btn_styling{
     background-color: #F45B69 !important;
+}
+.login_right_section .form_container{
+    margin-top: 130px ;
+    box-shadow: 0px 0px 5px grey;
+    padding: 25px 15px ;
+}
+
+
+.labels{
+    padding: 0px !important;
 }

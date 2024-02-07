@@ -36,6 +36,12 @@ app.use('/books',bookRouter);
 app.get('/',(req,res)=>{
     res.render('Index.ejs')
 })
+app.get('/register',(req,res)=>{
+    res.render('Register.ejs');
+})
+app.get('/home',(req,res)=>{
+    res.render('Home.ejs');
+})
 
 
 

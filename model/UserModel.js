@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
   Name: {
     type: String,
     unique: true,
-    required: true,
+    required: true
   },
   email: {
     type: String,
@@ -21,14 +21,8 @@ const UserSchema = new mongoose.Schema({
   },
 
 phone:{
-    type:String,
-    required: [true, "User Number is required"],
-    validate:{
-        validator:function(v){
-            return /^[0-9]{10}$/ .test(v);
-        },
-        message:(props)=>`${props.value} is not a valid phone number`
-    }
+    type:String
+  
 
 },
 
