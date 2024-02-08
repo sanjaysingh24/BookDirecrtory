@@ -6,7 +6,7 @@ import 'dotenv/config'
 import mongoose from 'mongoose';
 import {userRouter} from './Routes/UserRoute.js';
 import { bookRouter } from './Routes/BookRoute.js';
-
+import { Book } from './model/BookModel.js';
 // declare all the constants
 const app = express();
 const port = 4000;
@@ -39,8 +39,9 @@ app.get('/',(req,res)=>{
 app.get('/register',(req,res)=>{
     res.render('Register.ejs');
 })
-app.get('/home',(req,res)=>{
-    res.render('Home.ejs');
+app.get('/home',async (req,res)=>{
+    const data = await Book.find({});
+    res.render('Home.ejs',{data:data});
 })
 
 

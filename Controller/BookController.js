@@ -18,7 +18,7 @@ console.log(doc);
 export const getAllbook = async(req,res)=>{
     try{
       const data = await Book.find();
-      res.json(data);
+      
     }catch(err){
         res.json(err);
         console.log(err);
