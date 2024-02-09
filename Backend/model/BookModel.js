@@ -5,9 +5,10 @@ const BookSchema = new mongoose.Schema({
     author:{type:String, required:true},
  
     pages:{type:Number,required:true},
-    description:{type:String},
+  
     publisher:{type:String, required:true},
-    website:{type:String}
+    website:{type:String},
+    image:{type:Buffer}
 
 })
 export const Book = mongoose.model('Book',BookSchema);

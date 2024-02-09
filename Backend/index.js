@@ -7,10 +7,13 @@ import mongoose from 'mongoose';
 import {userRouter} from './Routes/UserRoute.js';
 import { bookRouter } from './Routes/BookRoute.js';
 import { Book } from './model/BookModel.js';
+import multer from 'multer';
 // declare all the constants
 const app = express();
 const port = 4000;
 console.log(process.env.PORT);
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 
 // declare middlewares functions
@@ -42,6 +45,9 @@ app.get('/register',(req,res)=>{
 app.get('/home',async (req,res)=>{
     const data = await Book.find({});
     res.render('Home.ejs',{data:data});
+})
+app.get('/AddBook',(req,res)=>{
+    res.render('AddBook.ejs');
 })
 
 

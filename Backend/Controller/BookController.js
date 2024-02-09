@@ -4,7 +4,9 @@ import {Book} from '../model/BookModel.js';
 
 export const Addbook   = async (req,res)=>{
 try{
-const newbook = new Book(req.body);
+const{title,subtitle,author,pages,publisher,website} = req.body;
+const image = req.file.Buffer;
+const newbook = new Book({title,subtitle,author,pages,publisher,website,image});
 const doc =await newbook.save();
 res.json(doc);
 console.log(doc);
@@ -18,7 +20,7 @@ console.log(doc);
 export const getAllbook = async(req,res)=>{
     try{
       const data = await Book.find();
-      
+      res.json(data);
     }catch(err){
         res.json(err);
         console.log(err);
@@ -28,11 +30,12 @@ export const getAllbook = async(req,res)=>{
 
 //get a specific book from the database
 export const getBook = async(req,res)=>{
-    const id = req.params.id;
+  
     try{
-      const data = await Book.findById(id);
-      res.json(data);
-      console.log(data);
+      
+        const search = req.query.search;
+      
+      
     }catch(err){
         res.json(err);
     console.log(err)

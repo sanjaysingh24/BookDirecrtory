@@ -1,0 +1,42 @@
+<%-include ('Header.ejs') %>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+         <div class="col-lg-6 mt-5">
+            <form action="/books/AddBook" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                 
+                  <input type="text" class="form-control" name="title" placeholder="Enter Book title">
+                 
+                </div>
+                <div class="mb-3">
+                 
+                  <input type="text" class="form-control" name="subtitle" placeholder="Enter Book subtitle">
+                </div>
+                <div class="mb-3">
+                 
+                    <input type="text" class="form-control" name="author" placeholder="Enter Book author">
+                  </div> 
+                  <div class="mb-3">
+                 
+                    <input type="number" class="form-control" name="pages" placeholder="Total pages of Book">
+                  </div> 
+                  <div class="mb-3">
+                    <input type="text" class="form-control" name="publisher" placeholder="Enter Book publisher Name">
+
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" name="website" placeholder="Enter Website Link">
+                  </div>
+                  <div class="mb-3">
+                    <label for="image">Select Image:</label>
+                    <input type="file" id="image" name="image" accept="image/*" placeholder="select Book image" required>
+
+                  </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+         </div>
+        </div>
+    </div>
+</body>
+</html>
