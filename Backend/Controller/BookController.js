@@ -30,10 +30,11 @@ export const getAllbook = async(req,res)=>{
 
 //get a specific book from the database
 export const getBook = async(req,res)=>{
-  
+    const id = req.query.id;
     try{
-      
-        const search = req.query.search;
+      const data = await Book.findById(id);
+      res.json(data);
+     
       
       
     }catch(err){

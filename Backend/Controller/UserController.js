@@ -1,5 +1,6 @@
 import {User} from '../model/UserModel.js'
 //controller for create a new user
+import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 const saltRounds = 10;
 export const Register = async (req, res) => {
@@ -15,14 +16,16 @@ export const Register = async (req, res) => {
         email: req.body.email,
         phone: req.body.number,
         password: hash,
+       
       });
-
+      let token  = jwt.sign({email:req.body.email},process.env.SECRET);
+      newUser.token = token;
       const doc = await newUser.save();
 
       // console.log(doc);
       // console.log('Successfully Registered');
-      // res.json({ success: true, message: 'Successfully registered' });
-      res.redirect('/');
+      res.json({ success: true, token });
+    
 
    
     });
@@ -44,27 +47,27 @@ export const login = async (req, res) => {
 
     if (!user) {
       // User not found
-      // return res.json({ success: false, message: 'Invalid username or password' });
-      res.redirect('/');
+      return res.json({ success: false, message: 'Invalid username or password' });
+   
     }
 
     bcrypt.compare(password, user.password, function (err, result) {
       if (result === true) {
         // Passwords match
         console.log('Successfully logged in');
-        // res.json({ success: true, message: 'Successfully logged in' });
-        res.redirect('/home');
+        res.json({ success: true, message: 'Successfully logged in' });
+      
       } else {
         // Passwords do not match
         console.log('Login failed');
-        // res.json({ success: false, message: 'Invalid username or password' });
-        res.redirect('/');
+        res.json({ success: false, message: 'Invalid username or password' });
+        // res.redirect('/');
       }
     });
   } catch (err) {
     console.error(err);
-    res.redirect('/');
-    // res.status(500).json({ success: false, message: 'Server error' });
+   
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 };
 

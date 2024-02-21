@@ -35,8 +35,8 @@ required:[true,"User password is required"],
 Books:[{
 type:mongoose.Schema.Types.ObjectId,
 ref:'Book'
-}]
-
+}],
+token:{type:String}
 });
 
 export const User = mongoose.model("User",UserSchema);

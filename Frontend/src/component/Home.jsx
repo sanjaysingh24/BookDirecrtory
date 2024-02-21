@@ -1,33 +1,33 @@
-<%-include ('./Header.ejs') %>
-<body>
-   <section>
-    <div class="container">
+import React from 'react'
+import './Style.css'
+const Home = () => {
+  return (
+    <div>
+       <div class="container">
         <div class="row">
-            <% if (locals.data) { %>
-                
-                <% data.forEach(element => { %>
+          
                     
                     <div class="col-lg-3 mt-4">
                    
                          <div class="book_card ">
                             <div class="book_img">
-                                <a href=<%= element.website%>>    <img src=<%= element.image%> alt="image" class="img-fluid">
+                            
                             </div>
-                        </a>
+                       
                             <div class="title ">
-                               <b>Title:</b> <%= element.title%>
+                               <b>Title:</b> 
                             </div>
                             <div class="subtitle">
-                                <b>Subtitle:</b>  <%= element.subtitle%>
+                                <b>Subtitle:</b>  
                             </div>
                             <div class="author">
-                                <b>Author:</b>  <%= element.author%>
+                                <b>Author:</b> 
                             </div>
                             <div class="publisher">
-                                <b>Publisher:</b> <%= element.publisher%>
+                                <b>Publisher:</b>
                             </div>
                             <div class="pages">
-                                <b>Pages:</b><%= element.pages%>
+                                <b>Pages:</b>
                             </div>
                             <div class="website">
                              
@@ -35,13 +35,12 @@
                         </div>
         
                     </div>
-                  <% }); %>
-              
-              <% } %>
+            
          
         </div>
     </div>
-   </section>
-   
-</body>
-</html>
+</div>
+  )
+}
+
+export default Home

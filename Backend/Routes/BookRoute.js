@@ -7,7 +7,7 @@ import { Addbook,getAllbook,getBook ,replaceBook,updateBook,deleteBook } from '.
 export const bookRouter = express.Router();
 bookRouter.post('/AddBook',upload.single('image'),Addbook)
 .get('/getAllbook', getAllbook)
-.get('/getbook/:search',getBook)
+.get('/getbook/:id',getBook)
 .put('/replaceBook/:id',replaceBook)
 .patch('/updateBook/:id',updateBook)
 .delete('/deleteBook/:id',deleteBook);
