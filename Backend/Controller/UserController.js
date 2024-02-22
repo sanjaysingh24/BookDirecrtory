@@ -55,7 +55,7 @@ export const login = async (req, res) => {
       if (result === true) {
         // Passwords match
         console.log('Successfully logged in');
-        res.json({ success: true, message: 'Successfully logged in' });
+        res.json({ success: true, message: 'Successfully logged in', });
       
       } else {
         // Passwords do not match

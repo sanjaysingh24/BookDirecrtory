@@ -1,24 +1,28 @@
 import React,{useState} from 'react'
 import './Style.css'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-const Login = () => {
+import {Link} from 'react-router-dom'
+const Register = () => {
 const [data,setdata] = useState({});
 
 const handlesubmit =async (e)=>{
   e.preventDefault();
   try{
-    const response = await axios.post('http://localhost:4000/user/login',data);
-    if(response.data.success==true){
-      
-    }
-    else{
-      console.log("error!");
-    }
-  }catch(err){
-    console.log(err);
-  }
+    const response = await fetch('http://localhost:4000/user/Register',{
+        method: 'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+     
+       })
+       console.log(response.json());
 }
+    catch(e){
+        console.log(e);
+    }
+}
+
 const handlechange =(e)=>{
   const{name,value} = e.target;
   setdata((prev)=>{
@@ -26,6 +30,7 @@ const handlechange =(e)=>{
   })
 
 }
+
   return (
    <>
   
@@ -36,9 +41,12 @@ const handlechange =(e)=>{
           <div className="col-lg-6 login_right_section">
 
             <div className="form_container">
-              <h2 className=" text-center">User login</h2>
+              <h2 className=" text-center">User Register</h2>
               <form >
-              
+              <div className="mb-3">
+                    <input type="email" className=" custom_form  w-100" id="floatingemail" placeholder="Enter your email" name="email" onChange={handlechange} value ={data.email}/>
+                 
+                  </div>
                 
                   <div className="mb-3">
                     <input type="text" className=" custom_form  w-100" id="floatingName" placeholder="username" name="username" onChange={handlechange} value ={data.username}/>
@@ -58,8 +66,8 @@ const handlechange =(e)=>{
                     >i agree to the all Statement  in <b><u>Terms of Service</u></b></label>
                 </div>
                <div className="text-center">
-                <button type="submit" className="btn  btn_styling text-white" onClick={handlesubmit}>Login</button>
-                 <p> <span><Link to="/register"><u>New here Register here</u></Link></span></p>
+                <button type="submit" className="btn  btn_styling text-white" onClick={handlesubmit}>Signup</button>
+                <p> <span><Link to="/"><u>already user login here</u></Link></span></p>
                </div>
               </form>
             </div>
@@ -74,4 +82,4 @@ const handlechange =(e)=>{
   )
 }
 
-export default Login
+export default Register;
