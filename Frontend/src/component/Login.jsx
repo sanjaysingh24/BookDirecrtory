@@ -2,15 +2,16 @@ import React,{useState} from 'react'
 import './Style.css'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
 const [data,setdata] = useState({});
-
+const navigate = useNavigate();
 const handlesubmit =async (e)=>{
   e.preventDefault();
   try{
     const response = await axios.post('http://localhost:4000/user/login',data);
     if(response.data.success==true){
-      
+      navigate('/Home');
     }
     else{
       console.log("error!");

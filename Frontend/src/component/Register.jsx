@@ -16,7 +16,13 @@ const handlesubmit =async (e)=>{
         }
      
        })
-       console.log(response.json());
+       const result = await response.json();
+       if(result.success){
+        console.log("yo bro");
+       }
+       else{
+        console.log("np bro");
+       }
 }
     catch(e){
         console.log(e);
@@ -47,7 +53,10 @@ const handlechange =(e)=>{
                     <input type="email" className=" custom_form  w-100" id="floatingemail" placeholder="Enter your email" name="email" onChange={handlechange} value ={data.email}/>
                  
                   </div>
-                
+                  <div className="mb-3">
+                    <input type="text" className=" custom_form  w-100" id="floatingnumber" placeholder="Enter your Phone number" name="number" onChange={handlechange} value ={data.number}/>
+                 
+                  </div>
                   <div className="mb-3">
                     <input type="text" className=" custom_form  w-100" id="floatingName" placeholder="username" name="username" onChange={handlechange} value ={data.username}/>
                  
