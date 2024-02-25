@@ -48,7 +48,7 @@ const auth = ((req,res,next)=>{
 
 // routes
 app.use('/user',userRouter);
-app.use('/books',auth,bookRouter);
+app.use('/books',bookRouter);
 
 
 

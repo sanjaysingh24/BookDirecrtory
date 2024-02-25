@@ -2,20 +2,40 @@ import React from 'react'
 import './Style.css'
 import { useEffect,useState } from 'react'
 import axios from 'axios'
+
 const Home = () => {
 const[respons,setResponse]  = useState([]); 
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
 const fetchdata = async()=>{
+  try{
     const data = await axios.get('http://localhost:4000/books/getAllbook');
-   const result= data.data;
-   setResponse(result);
-   console.log(result);
+    const result= data.data;
+    setResponse(result);
+  }catch(e){
+    setError(e.message);
+  }
+  finally{
+    setLoading(false);
+  }
+
+  
    
 }
 
 useEffect(()=>{
+ 
 fetchdata();
 
 },[])
+
+if(loading){
+       return <div>Loading...</div> 
+}
+if (error) {
+    return <div>Error: {error}</div>;
+  }
+
 
   return (
     <div>
@@ -25,7 +45,7 @@ fetchdata();
                     
                   {respons.map((books)=>{
                    return(
-                    <div class="col-lg-3 mt-4">
+                    <div key ={books._id} class="col-lg-3 mt-4">
                    
                     <div class="book_card ">
                        <div class="book_img">

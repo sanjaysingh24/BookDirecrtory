@@ -1,6 +1,13 @@
 import React from 'react'
 import './Style.css'
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
+const navigate = useNavigate();
+let islogin = localStorage.getItem('token');
+const handlelogout  = ()=>{
+  localStorage.removeItem('token');
+  navigate('/');
+}
   return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,6 +30,9 @@ const Header = () => {
               </li>
             
             </ul>
+            <div>
+              <a onClick={handlelogout}>{islogin?'Logout':' '}</a>
+            </div>
             <form className="d-flex" action="/books/getBook" method="get">
               <input className="form-control me-2" type="search"  name ="search" placeholder="Search"/>
               <button className="btn btn-outline-success" type="submit">Search</button>
