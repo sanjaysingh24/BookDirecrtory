@@ -21,10 +21,11 @@ export const Register = async (req, res) => {
       let token  = jwt.sign({email:req.body.email},process.env.SECRET);
       newUser.token = token;
       const doc = await newUser.save();
+      const Token = doc.token;
 
       // console.log(doc);
       // console.log('Successfully Registered');
-      res.json({ success: true, token });
+      res.json({ success: true ,Token});
     
 
    
@@ -44,9 +45,10 @@ export const login = async (req, res) => {
     const password = req.body.password;
 
     const user = await User.findOne({ Name: username });
-
+ 
     if (!user) {
       // User not found
+ 
       return res.json({ success: false, message: 'Invalid username or password' });
    
     }
@@ -54,8 +56,11 @@ export const login = async (req, res) => {
     bcrypt.compare(password, user.password, function (err, result) {
       if (result === true) {
         // Passwords match
-        console.log('Successfully logged in');
-        res.json({ success: true, message: 'Successfully logged in', });
+       const token = user.token;
+     
+     
+
+        res.json({ success: true, message: 'Successfully logged in',token});
       
       } else {
         // Passwords do not match

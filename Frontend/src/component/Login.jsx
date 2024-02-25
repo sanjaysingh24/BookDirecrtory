@@ -5,13 +5,25 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
 const [data,setdata] = useState({});
+const [token,sendtoken] = useState("");
 const navigate = useNavigate();
 const handlesubmit =async (e)=>{
   e.preventDefault();
   try{
     const response = await axios.post('http://localhost:4000/user/login',data);
+    
+
     if(response.data.success==true){
+    const token = response.data.token;
+    // console.log(token);
+    localStorage.setItem('token', token);
+
+      // Set the token in Axios headers for future requests
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+   
       navigate('/Home');
+
     }
     else{
       console.log("error!");
@@ -20,6 +32,7 @@ const handlesubmit =async (e)=>{
     console.log(err);
   }
 }
+
 const handlechange =(e)=>{
   const{name,value} = e.target;
   setdata((prev)=>{

@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 import {userRouter} from './Routes/UserRoute.js';
 import { bookRouter } from './Routes/BookRoute.js';
 import { Book } from './model/BookModel.js';
-
+import jwt from 'jsonwebtoken';
 import cors from 'cors';
 // declare all the constants
 const app = express();
@@ -31,10 +31,24 @@ async function main(){
     console.log('connect successfully');
 }
 
+//middleware to check either the user is login or not
+const auth = ((req,res,next)=>{
+    const token = req.get('Authorization').split('Bearer ' )[1];
+    console.log(token);
+    let decoded = jwt.verify(token,process.env.SECRET);
+ 
+    if(decoded.email){
+        next() 
+
+     }
+     else{
+         res.sendStatus(401)
+     }
+})
 
 // routes
 app.use('/user',userRouter);
-app.use('/books',bookRouter);
+app.use('/books',auth,bookRouter);
 
 
 

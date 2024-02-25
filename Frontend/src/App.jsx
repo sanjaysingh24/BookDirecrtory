@@ -7,8 +7,10 @@ import Login from './component/Login'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Home from './component/Home';
 import Register from './component/Register'
+import Addbook from './component/Addbook'
 function App() {
-  
+let tokens = localStorage.getItem('token');
+console.log(tokens);
 
   return (
     <>
@@ -19,6 +21,7 @@ function App() {
   <Route path='/' element={  <Login></Login>}></Route>
   <Route path='/register' element ={<Register></Register>}></Route>
   <Route path='/Home' element={<Home></Home>}></Route>
+  <Route path ='/Addbook' element={tokens? <Addbook></Addbook>:<Login></Login>}></Route>
  </Routes>
  </BrowserRouter>
     </>
