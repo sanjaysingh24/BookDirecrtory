@@ -5,8 +5,8 @@ import {Book} from '../model/BookModel.js';
 export const Addbook   = async (req,res)=>{
 try{
 const{title,subtitle,author,pages,publisher,website} = req.body;
-const image = req.file.Buffer;
-const newbook = new Book({title,subtitle,author,pages,publisher,website,image});
+
+const newbook = new Book({title,subtitle,author,pages,publisher,website});
 const doc =await newbook.save();
 res.json(doc);
 console.log(doc);

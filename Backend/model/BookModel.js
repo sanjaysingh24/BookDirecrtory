@@ -8,7 +8,7 @@ const BookSchema = new mongoose.Schema({
   
     publisher:{type:String, required:true},
     website:{type:String},
-    image:{type:Buffer}
+ 
 
 })
 export const Book = mongoose.model('Book',BookSchema);

@@ -36,7 +36,9 @@ if (error) {
     return <div>Error: {error}</div>;
   }
 
-
+const handleclick = ()=>{
+  
+}
   return (
     <div>
        <div class="container">
@@ -67,9 +69,7 @@ if (error) {
                        <div class="pages">
                            <b>Pages:</b>{books.pages}
                        </div>
-                       <div class="website">
-                        
-                       </div>
+                        <button onClick={handleclick} type = "submit" className='btn btn-primary   mt-2'>delete</button>
                    </div>
    
                </div>

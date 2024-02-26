@@ -12,15 +12,16 @@ function App() {
 let tokens = localStorage.getItem('token');
 console.log(tokens);
 
+
   return (
     <>
  <BrowserRouter>
  <Header></Header>
   
  <Routes>
-  <Route path='/' element={  <Login></Login>}></Route>
+  <Route path='/' element={<Login></Login> }></Route>
   <Route path='/register' element ={<Register></Register>}></Route>
-  <Route path='/Home' element={<Home></Home>}></Route>
+ <Route path='/Home' element  ={<Home></Home>}></Route>
   <Route path ='/Addbook' element={tokens? <Addbook></Addbook>:<Login></Login>}></Route>
  </Routes>
  </BrowserRouter>
