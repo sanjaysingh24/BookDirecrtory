@@ -7,10 +7,12 @@ const Home = () => {
 const[respons,setResponse]  = useState([]); 
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
+
 const fetchdata = async()=>{
   try{
     const data = await axios.get('http://localhost:4000/books/getAllbook');
     const result= data.data;
+ 
     setResponse(result);
   }catch(e){
     setError(e.message);
@@ -35,41 +37,48 @@ if(loading){
 if (error) {
     return <div>Error: {error}</div>;
   }
+  // let id = '65c3511a71429ad2afcc55d8';
 
-const handleclick = ()=>{
-  
-}
+  const handleclick = async (id) => {
+    try {
+        const dd = await axios.delete(`http://localhost:4000/books/deleteBook/${id}`);
+        console.log(`Book with ID ${id} deleted successfully`);
+        fetchdata();
+      } catch (error) {
+        console.error(`Error deleting book with ID ${id}:`, error.message);
+      }
+    }
   return (
     <div>
-       <div class="container">
-        <div class="row">
+       <div className="container">
+        <div className="row">
           
                     
                   {respons.map((books)=>{
                    return(
-                    <div key ={books._id} class="col-lg-3 mt-4">
+                    <div key ={books._id} className="col-lg-3 mt-4">
                    
-                    <div class="book_card ">
-                       <div class="book_img">
+                    <div className="book_card ">
+                       <div className="book_img">
                        
                        </div>
                   
-                       <div class="title ">
+                       <div className="title ">
                           <b>Title: </b> {books.title}
                        </div>
-                       <div class="subtitle">
+                       <div className="subtitle">
                            <b>Subtitle:</b>  {books.subtitle}
                        </div>
-                       <div class="author">
+                       <div className="author">
                            <b>Author:</b> {books.author}
                        </div>
-                       <div class="publisher">
+                       <div className="publisher">
                            <b>Publisher:</b>{books.publisher}
                        </div>
-                       <div class="pages">
+                       <div className="pages">
                            <b>Pages:</b>{books.pages}
                        </div>
-                        <button onClick={handleclick} type = "submit" className='btn btn-primary   mt-2'>delete</button>
+                        <button onClick={()=>handleclick(books._id)} type = "submit" className='btn btn-primary   mt-2'>delete</button>
                    </div>
    
                </div>

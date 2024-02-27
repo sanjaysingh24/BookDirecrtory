@@ -22,6 +22,10 @@ const handlelogout  = ()=>{
                 <a className="nav-link active" aria-current="page" href="/Addbook">Add Book</a>
               </li>
             
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/Home">show Books</a>
+              </li>
+            
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                  More Options
