@@ -7,7 +7,15 @@ const Home = () => {
 const[respons,setResponse]  = useState([]); 
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
+const [data,setdata] = useState({});
+const [edit,setedit]= useState(false);
+const handlechange = (e)=>{
+const{name,value} = e.target;
 
+setdata((prev)=>{
+  return {...prev,[name]:value};
+})
+}
 const fetchdata = async()=>{
   try{
     const data = await axios.get('http://localhost:4000/books/getAllbook');
@@ -48,6 +56,21 @@ if (error) {
         console.error(`Error deleting book with ID ${id}:`, error.message);
       }
     }
+    const handleedit = ()=>{
+      setedit(!edit);
+      // try{
+      //    const edit = await axios.patch(`http://localhost:4000/books/updateBook/${id}`);
+      // }catch(error){
+      //   console.log('error to update the value of the book');
+      // }
+    }
+    const handleupdate = async(id)=>{
+         try{
+          const edit = await axios.patch(`http://localhost:4000/books/updateBook/${id}`);
+      }catch(error){
+         console.log('error to update the value of the book');
+       }
+    }
   return (
     <div>
        <div className="container">
@@ -78,15 +101,86 @@ if (error) {
                        <div className="pages">
                            <b>Pages:</b>{books.pages}
                        </div>
-                        <button onClick={()=>handleclick(books._id)} type = "submit" className='btn btn-primary   mt-2'>delete</button>
+                      <div className='d-flex align-items-center justify-content-between'>
+
+                      <div>
+                       <button onClick={()=>handleclick(books._id)} type = "submit" className='btn btn-primary   mt-2'>delete</button>
+                       </div>
+                       <div className='mt-1'>
+                        <button onClick={()=>handleedit(books._id)} type='submit' className='btn btn-primary'>Edit</button>
+                       </div>
+                      </div>
                    </div>
    
+
                </div>
        
                    )
                   })}
          
+    
+     
         </div>
+        {edit?<div className="row justify-content-center">
+          <div className="col-lg-6 popup_parent">
+         <div className='popup_design'>
+         <form>
+          
+        <div className="row">
+          <div className="col-lg-6">
+          <div className="mb-3">
+            <label htmlFor="booktitle" className="form-label">Enter Book Title</label>
+            <input type="text" className="form-control" id="booktitle" placeholder='Title'  name ="title"  onChange={handlechange}  value={data.title} />
+         
+          </div>
+        
+          </div>
+
+          <div className="col-lg-6">
+          <div className="mb-3">
+            <label htmlFor="subtitle" className="form-label">Enter Book Subtitle</label>
+            <input type="text" className="form-control" id="subtitle" placeholder='Subtitle'  name ="subtitle" onChange={handlechange}  value={data.subtitle}/>
+         
+          </div>
+          </div>
+
+          <div className="col-lg-6">
+          <div className="mb-3">
+            <label htmlFor="Authorname" className="form-label">Enter the Author Name</label>
+            <input type="text" className="form-control" id="Authorname" placeholder='Author' name ="author" onChange={handlechange} value={data.author} />
+          </div>
+          </div>
+          <div className="col-lg-6">
+          <div className="mb-3">
+            <label htmlFor="Page" className="form-label">Pages</label>
+            <input type="text" className="form-control" id="Page" placeholder='Pagenumber' name ="pages" onChange={handlechange}  value={data.pages}/>
+          </div>
+          </div>
+          <div className="col-lg-6">
+          <div className="mb-3">
+            <label htmlFor="Publisher" className="form-label">Publisher</label>
+            <input type="text" className="form-control" id="Publisher" placeholder='Publisher' name ="publisher" onChange={handlechange}  value={data.publisher}/>
+          </div>
+          </div>
+          <div className="col-lg-6">
+          <div className="mb-3">
+            <label htmlFor="Website" className="form-label">Website</label>
+            <input type="text" className="form-control" id="Website" placeholder='Website' name ="website" onChange={handlechange} value={data.website} />
+          </div>
+          </div>
+        </div>
+          
+        
+          
+         
+         
+         <div className='text-center'>
+         <button onClick={()=>handleupdate(id)} type="submit" className="btn btn-primary">update</button>
+         </div>
+        </form>
+         </div>
+          </div>
+        </div>:''}
     </div>
 </div>
   )
