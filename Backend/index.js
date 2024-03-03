@@ -20,7 +20,11 @@ console.log(process.env.PORT);
 app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors())
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  };
+app.use(cors(corsOptions));
 
 app.get('/',(req,res)=>{
     res.send("hello sir");
