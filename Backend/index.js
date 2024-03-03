@@ -21,11 +21,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(cors({
-    origin:["https://book-direcrtory.vercel.app"],
-    methods:["POST", "PUT", "PATCH","GET","DELETE"],
-    credentials:true
-}));
+
 
 app.get('/',(req,res)=>{
     res.send("hello sir");
