@@ -20,11 +20,12 @@ console.log(process.env.PORT);
 app.use(express.static('public'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
-const corsOptions = {
-    origin: 'http://localhost:5173',
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  };
-app.use(cors(corsOptions));
+
+app.use(cors({
+    origin:["https://book-direcrtory.vercel.app"],
+    methods:["POST", "PUT", "PATCH","GET","DELETE"],
+    credentials:true
+}));
 
 app.get('/',(req,res)=>{
     res.send("hello sir");
