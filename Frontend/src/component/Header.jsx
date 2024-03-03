@@ -35,7 +35,7 @@ const handlelogout  = ()=>{
             
             </ul>
             <div>
-              <a onClick={handlelogout}>{islogin?'Logout':' '}</a>
+              <a onClick={handlelogout} className='logout'>{islogin?'Logout':' '}</a>
             </div>
             <form className="d-flex" action="/books/getBook" method="get">
               <input className="form-control me-2" type="search"  name ="search" placeholder="Search"/>

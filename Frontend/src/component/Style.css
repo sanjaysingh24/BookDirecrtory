@@ -54,3 +54,26 @@ margin-top: 20px;
     padding: 30px;
     box-shadow: 0px 0px 10px grey;
 }
+.popup{
+    position: relative;
+}
+.cross_btn{
+    position: absolute;
+    right: -20px;
+    top: -20px;
+
+}
+.cross_btn button{
+    border: none;
+}
+.logout{
+   
+    text-decoration: none;
+    
+    cursor: pointer;
+
+  
+}
+.logout:hover{
+    color: bisque;
+}

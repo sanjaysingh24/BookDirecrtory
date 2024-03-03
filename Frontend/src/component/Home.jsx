@@ -58,7 +58,7 @@ if (error) {
       }
     }
     const handleedit =async (id)=>{
-      setedit(!edit);
+      setedit(true);
       console.log(id);
       setbookid(id);
      console.log(bookid);
@@ -73,6 +73,9 @@ if (error) {
        }
     }
   
+    const handleclose =()=>{
+      setedit(false);
+    }
   return (
     <div>
       
@@ -127,6 +130,11 @@ if (error) {
         {edit?<div className="row justify-content-center">
           <div className="col-lg-6 popup_parent">
          <div className='popup_design'>
+         <div className="popup">
+         <div className='cross_btn'>
+            <button onClick={handleclose}>❌</button>
+          </div>
+         </div>
          <form>
 
           
