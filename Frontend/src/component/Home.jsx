@@ -9,6 +9,7 @@ const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
 const [data,setdata] = useState({});
 const [edit,setedit]= useState(false);
+const [id,setbookid]  = useState([]);
 const handlechange = (e)=>{
 const{name,value} = e.target;
 
@@ -20,7 +21,7 @@ const fetchdata = async()=>{
   try{
     const data = await axios.get('http://localhost:4000/books/getAllbook');
     const result= data.data;
- 
+    
     setResponse(result);
   }catch(e){
     setError(e.message);
@@ -45,7 +46,7 @@ if(loading){
 if (error) {
     return <div>Error: {error}</div>;
   }
-  // let id = '65c3511a71429ad2afcc55d8';
+
 
   const handleclick = async (id) => {
     try {
@@ -56,23 +57,25 @@ if (error) {
         console.error(`Error deleting book with ID ${id}:`, error.message);
       }
     }
-    const handleedit = ()=>{
+    const handleedit =async (id)=>{
       setedit(!edit);
-      // try{
-      //    const edit = await axios.patch(`http://localhost:4000/books/updateBook/${id}`);
-      // }catch(error){
-      //   console.log('error to update the value of the book');
-      // }
+      console.log(id);
+      setbookid(id);
+     console.log(bookid);
     }
-    const handleupdate = async(id)=>{
+    const handleupdate = async()=>{
+
          try{
-          const edit = await axios.patch(`http://localhost:4000/books/updateBook/${id}`);
+          const edit = await axios.patch(`http://localhost:4000/books/updateBook/${id}`,data);
+          await fetchdata();
       }catch(error){
          console.log('error to update the value of the book');
        }
     }
+  
   return (
     <div>
+      
        <div className="container">
         <div className="row">
           
@@ -125,6 +128,7 @@ if (error) {
           <div className="col-lg-6 popup_parent">
          <div className='popup_design'>
          <form>
+
           
         <div className="row">
           <div className="col-lg-6">
@@ -175,7 +179,7 @@ if (error) {
          
          
          <div className='text-center'>
-         <button onClick={()=>handleupdate(id)} type="submit" className="btn btn-primary">update</button>
+         <button onClick={()=>handleupdate()} type="submit" className="btn btn-primary">update</button>
          </div>
         </form>
          </div>

@@ -30,9 +30,9 @@ export const getAllbook = async(req,res)=>{
 
 //get a specific book from the database
 export const getBook = async(req,res)=>{
-    const id = req.query.id;
+    const id = req.params.id;
     try{
-      const data = await Book.findById(id);
+      const data = await Book.findOne({_id:id});
       res.json(data);
      
       
@@ -46,6 +46,8 @@ export const getBook = async(req,res)=>{
 //replace the book content with the new content
 export const replaceBook = async(req,res)=>{
     const id = req.params.id;
+   
+    console.log(title);
     try{
         
         const data = await Book.findOneAndReplace({_id:id},req.body,{new:true});
@@ -64,7 +66,8 @@ export const replaceBook = async(req,res)=>{
 //update the details of the book
 
 export const updateBook = async(req,res)=>{
-    const id = req.params.id;
+  const id =req.params.id;
+
     try{
         const data = await Book.findOneAndUpdate({_id:id},req.body,{new:true});
         //new:true because it return the modified object
