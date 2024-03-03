@@ -12,7 +12,7 @@ setdata((prev)=>{
 const handleclick =async (e)=>{
 e.preventDefault();
 try{
-  const senddata  = await axios.post('http://localhost:4000/books/AddBook',data);
+  const senddata  = await axios.post('https://bookdirecrtory.onrender.com/books/AddBook',data);
   console.log(senddata.data);
 
 }catch(e){

@@ -8,7 +8,7 @@ const [data,setdata] = useState({});
 const handlesubmit =async (e)=>{
   e.preventDefault();
   try{
-    const response = await fetch('https://book-direcrtory.vercel.appcd/user/Register',{
+    const response = await fetch('https://bookdirecrtory.onrender.com/user/Register',{
         method: 'POST',
         body:JSON.stringify(data),
         headers:{

@@ -19,7 +19,7 @@ setdata((prev)=>{
 }
 const fetchdata = async()=>{
   try{
-    const data = await axios.get('http://localhost:4000/books/getAllbook');
+    const data = await axios.get('https://bookdirecrtory.onrender.com/books/getAllbook');
     const result= data.data;
     
     setResponse(result);
@@ -50,7 +50,7 @@ if (error) {
 
   const handleclick = async (id) => {
     try {
-        const dd = await axios.delete(`http://localhost:4000/books/deleteBook/${id}`);
+        const dd = await axios.delete(`https://bookdirecrtory.onrender.com/books/deleteBook/${id}`);
         console.log(`Book with ID ${id} deleted successfully`);
         fetchdata();
       } catch (error) {
@@ -66,7 +66,7 @@ if (error) {
     const handleupdate = async()=>{
 
          try{
-          const edit = await axios.patch(`http://localhost:4000/books/updateBook/${id}`,data);
+          const edit = await axios.patch(`https://bookdirecrtory.onrender.com/books/updateBook/${id}`,data);
           await fetchdata();
       }catch(error){
          console.log('error to update the value of the book');
