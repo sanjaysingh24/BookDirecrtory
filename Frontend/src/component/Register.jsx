@@ -20,10 +20,10 @@ const handlesubmit =async (e)=>{
      
        if(result.success){
 
-        console.log("yo bro");
+     console.log("success")
        }
        else{
-        console.log("np bro");
+   console.log("error");
        }
 }
     catch(e){

@@ -51,17 +51,17 @@ if (error) {
   const handleclick = async (id) => {
     try {
         const dd = await axios.delete(`https://bookdirecrtory.onrender.com/books/deleteBook/${id}`);
-        console.log(`Book with ID ${id} deleted successfully`);
+      
         fetchdata();
       } catch (error) {
-        console.error(`Error deleting book with ID ${id}:`, error.message);
+      console.log(error);
       }
     }
     const handleedit =async (id)=>{
       setedit(true);
-      console.log(id);
+     
       setbookid(id);
-     console.log(bookid);
+   
     }
     const handleupdate = async()=>{
 

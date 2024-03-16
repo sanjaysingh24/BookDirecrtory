@@ -13,7 +13,7 @@ const handleclick =async (e)=>{
 e.preventDefault();
 try{
   const senddata  = await axios.post('https://bookdirecrtory.onrender.com/books/AddBook',data);
-  console.log(senddata.data);
+  
 
 }catch(e){
   console.log(e.message);
